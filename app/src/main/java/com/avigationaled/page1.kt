@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,7 +43,10 @@ class page1 : Fragment() {
         val buttonFragmentA: Button? = view?.findViewById(R.id.button)
         buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.mainfrag)
-            Log.d("HTTPRequest",HttpKtorClient().http_get("www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"))
+            val text = HttpKtorClient().http_get("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata") as String
+            val toast = Toast.makeText(context, text, Toast.LENGTH_LONG) // in Activity
+            toast.show()
+            Log.d("HttpRequest",text)
         }
         return view
     }

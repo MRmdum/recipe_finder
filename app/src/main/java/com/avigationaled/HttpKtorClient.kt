@@ -1,6 +1,7 @@
 package com.avigationaled
 
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
@@ -8,14 +9,14 @@ import io.ktor.client.engine.cio.*
 
 import kotlinx.coroutines.runBlocking
 class HttpKtorClient {
-    fun http_get(url : String): String = runBlocking{
+    fun http_get(url : String): Meal = runBlocking{
 
         val client = HttpClient(CIO)
-        var response : String
+        var response : Meal
         try {
-            response = client.get(url) as String
+            response = client.get(url).body() as Meal
         } catch (e: Exception) {
-            response = "Error: ${e.localizedMessage}"
+            throw Error("Error: ${e.localizedMessage}")
         } finally {
             client.close()
         }
