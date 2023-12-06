@@ -28,6 +28,7 @@
         app:layout_constraintVertical_bias="0.48" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         style="@style/custom_card_view_style"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -95,11 +96,14 @@
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_forgot_password"
+                app:layout_constraintVertical_bias="0.473"
                 app:rippleColor="@color/purple_700" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -123,6 +127,7 @@
                     android:text="Sign Up"
                     android:textColor="@color/app_theme" />
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -131,7 +136,11 @@
         android:id="@+id/imageView2"
         android:layout_width="274dp"
         android:layout_height="263dp"
-        app:srcCompat="@drawable/man_pie"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="26dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057"
+        app:srcCompat="@drawable/man_pie" />
 </androidx.constraintlayout.widget.ConstraintLayout>
