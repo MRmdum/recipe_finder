@@ -22,6 +22,7 @@ class HttpKtorClient {
         } finally {
             client.close()
         }
+        print("a")
         return@runBlocking response
     }
 }
