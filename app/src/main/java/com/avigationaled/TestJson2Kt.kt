@@ -58,4 +58,5 @@ data class Meal(
     val strSource: Any,
     val strTags: String,
     val strYoutube: String
+
 )
