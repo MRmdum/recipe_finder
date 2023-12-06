@@ -126,4 +126,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="274dp"
+        android:layout_height="263dp"
+        app:srcCompat="@drawable/man_pie"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="26dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
