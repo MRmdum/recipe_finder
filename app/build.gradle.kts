@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    kotlin("plugin.serialization") version "1.9.21"
+
 }
 
 android {
@@ -56,5 +59,8 @@ dependencies {
     implementation ("io.ktor:ktor-client-json-jvm:2.3.6")
     implementation ("io.ktor:ktor-client-logging-jvm:2.3.6")
     implementation("io.ktor:ktor-client-cio:2.3.6")
+    implementation ("com.google.code.gson:gson:2.10")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
 }
