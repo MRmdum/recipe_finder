@@ -8,7 +8,7 @@
         android:id="@+id/mainfrag"
         android:name="com.avigationaled.mainfrag"
         android:label="fragment_mainfrag"
-        tools:layout="@layout/fragment_mainfrag" >
+        tools:layout="@layout/recipy_search" >
         <action
             android:id="@+id/action_mainfrag_to_page12"
             app:destination="@id/page1" />

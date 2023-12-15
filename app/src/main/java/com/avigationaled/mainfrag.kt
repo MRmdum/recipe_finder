@@ -1,11 +1,11 @@
 package com.avigationaled
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,9 +36,9 @@ class mainfrag : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_mainfrag, container, false)
+        val view = inflater.inflate(R.layout.recipy_search, container, false)
 
-        val buttonFragmentA: Button? = view?.findViewById(R.id.supabutton)
+        val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
         buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.page1)
         }

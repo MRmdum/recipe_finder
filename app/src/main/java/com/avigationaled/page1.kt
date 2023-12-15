@@ -1,7 +1,6 @@
 package com.avigationaled
 
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,7 +39,7 @@ class page1 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_page1, container, false)
-        val buttonFragmentA: Button? = view?.findViewById(R.id.button)
+        val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
         buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.mainfrag)
             val text = HttpKtorClient().http_get("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata") as String
