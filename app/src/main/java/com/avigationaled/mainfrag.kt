@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +38,12 @@ class mainfrag : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        lifecycleScope.launch{
+            val url = "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
+            HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
+        }
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.recipy_search, container, false)
 

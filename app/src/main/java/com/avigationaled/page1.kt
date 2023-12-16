@@ -47,7 +47,8 @@ class page1 : Fragment() {
     ): View? {
 
             lifecycleScope.launch{
-
+                val url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+                HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
             }
 
             // Inflate the layout for this fragment

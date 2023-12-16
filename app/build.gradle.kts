@@ -59,6 +59,7 @@ dependencies {
     implementation ("io.ktor:ktor-client-core:2.3.6")
     implementation ("io.ktor:ktor-client-json-jvm:2.3.6")
     implementation ("io.ktor:ktor-client-logging-jvm:2.3.6")
+    implementation("io.ktor:ktor-client-okhttp:2.3.6")
     implementation("io.ktor:ktor-client-cio:2.3.6")
     implementation ("com.google.code.gson:gson:2.10")
 
