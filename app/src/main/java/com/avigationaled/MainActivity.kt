@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 
@@ -20,15 +21,21 @@ class MainActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btn_sign_in)
         val edUsername = findViewById<EditText>(R.id.ed_username)
         val edPassword = findViewById<EditText>(R.id.ed_password)
+        val btnCreate = findViewById<TextView>(R.id.tv_signup)
 
         val sharePreference = getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
         val getUsername = sharePreference.getString("USERNAME","")
         val getPassword = sharePreference.getString("PASSWORD","")
 
-        if(getUsername == "user" && getPassword == "1234")
+        val sharedPreferenceUser = getSharedPreferences("USERS", Context.MODE_PRIVATE)
+
+        if(sharedPreferenceUser.contains(getUsername))
         {
-            val i = Intent(this,LoginPage::class.java)
-            startActivity(i)
+            Log.d("MOT DE PASSE",sharedPreferenceUser.all[getUsername].toString())
+            if(getPassword == sharedPreferenceUser.all[getUsername].toString()){
+                val i = Intent(this,LoginPage::class.java)
+                startActivity(i)
+            }
         }
 
         btnLogin.setOnClickListener{
@@ -41,11 +48,20 @@ class MainActivity : AppCompatActivity() {
             editor.putString("USERNAME",username)
             editor.putString("PASSWORD",password)
             editor.apply()
-            if(username == "user" && password == "1234")
+            if(sharedPreferenceUser.contains(edUsername.text.toString()))
             {
-                val i = Intent(this,LoginPage::class.java)
-                startActivity(i)
+                Log.d("MOT DE PASSE",sharedPreferenceUser.all[username].toString())
+                if(edPassword.text.toString() == sharedPreferenceUser.all[username].toString()){
+                    val i = Intent(this,LoginPage::class.java)
+                    startActivity(i)
+                }
             }
         }
+        btnCreate.setOnClickListener {
+            val i = Intent(this,CreateAccount::class.java)
+            startActivity(i)
+        }
     }
+
+
 }

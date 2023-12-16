@@ -30,6 +30,8 @@ class LoginPage : AppCompatActivity() {
         /*val username = sharePreference.getString("USERNAME","").toString()
         val password = sharePreference.getString("PASSWORD","").toString()
         success.text = "username is : $username Password is : $password"*/
+        Log.d("USERNAME_HOMEPAGE",sharePreference.getString("USERNAME","").toString())
+        Log.d("PASSWORD_HOMEPAGE",sharePreference.getString("PASSWORD","").toString())
         btnDisconnect.setOnClickListener {
             val editor = sharePreference.edit()
             editor.putString("USERNAME","")
