@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ochre"
-    tools:context=".MainActivity">
+    tools:context=".CreateAccount">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -18,14 +18,15 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="248dp"
-        android:text="Welcome\nBack"
+        android:text="Enter your\nAttributes"
         android:textColor="@color/white"
         android:textSize="36dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.096" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -56,11 +57,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <EditText
                 android:id="@+id/ed_password"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="68dp"
                 android:background="@drawable/edit_text_background"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
@@ -70,36 +72,41 @@
                 android:inputType="textPassword"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ed_username" />
 
-            <TextView
-                android:id="@+id/tv_forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
-                android:text="Forgot Password"
-                android:textColor="@color/flame"
-                android:textStyle="bold"
+            <EditText
+                android:id="@+id/ed_passwordAgain"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="68dp"
+                android:background="@drawable/edit_text_background"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/Crimson"
+                android:ems="10"
+                android:hint="Password again"
+                android:inputType="textPassword"
+                android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ed_password" />
 
             <Button
-                android:id="@+id/btn_sign_in"
+                android:id="@+id/btn_createAccount"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/flame"
-                android:text="SIGN IN"
+                android:text="CREATE ACCOUNT"
                 app:cornerRadius="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_forgot_password"
-                app:layout_constraintVertical_bias="0.473"
                 app:rippleColor="@color/purple_700" />
 
             <LinearLayout
@@ -110,24 +117,20 @@
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"/>
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="Don't have any account " />
-
-                <TextView
-                    android:id="@+id/tv_signup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:clickable="true"
-                    android:text="Sign Up"
-                    android:textColor="@color/flame" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txt_alreadyExist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:text="Les mots de passe sont différents"
+                android:textColor="#A646CF"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/btn_createAccount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_passwordAgain" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,13 +138,14 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="274dp"
-        android:layout_height="263dp"
+        android:layout_width="307dp"
+        android:layout_height="294dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057"
-        app:srcCompat="@drawable/man_pie" />
+        app:layout_constraintVertical_bias="0.076"
+        app:srcCompat="@drawable/sammy" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
