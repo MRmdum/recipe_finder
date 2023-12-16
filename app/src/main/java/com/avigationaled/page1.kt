@@ -52,7 +52,7 @@ class page1 : Fragment() {
 
             // Inflate the layout for this fragment
             val view = inflater.inflate(R.layout.fragment_page1, container, false)
-            val buttonFragmentA: Button? = view?.findViewById(R.id.button)
+            val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
             buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.mainfrag)
 

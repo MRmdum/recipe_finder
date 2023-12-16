@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
@@ -38,7 +39,7 @@ class mainfrag : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.recipy_search, container, false)
 
-        val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
+        val buttonFragmentA: ImageButton? = view?.findViewById(R.id.Button)
         buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.page1)
         }

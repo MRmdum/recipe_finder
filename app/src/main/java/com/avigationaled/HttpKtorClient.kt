@@ -46,21 +46,21 @@ class HttpKtorClient : CoroutineScope {
 
         return repas
     }
-    suspend fun fromGetWriteDB(url : String){
-        val mealFetched = withContext(Dispatchers.IO) {
-            HttpKtorClient().http_get(url)
-        }
-        var repo = UserRepository(View.getContext())
-        if (mealFetched != null) {
-            if (mealFetched.meals.isNotEmpty())
-                for(meal in mealFetched.meals){
-                    try {
-                        repo.insertMeal(meal)
-                        Log.d("SQLite","Row Added")
-                    }catch (e : SQLiteConstraintException){
-                        Log.d("SQLiteConstraintException",e.toString())
-                    }
-                }
-        }
-    }
+//    suspend fun fromGetWriteDB(url : String){
+//        val mealFetched = withContext(Dispatchers.IO) {
+//            HttpKtorClient().http_get(url)
+//        }
+//        var repo = UserRepository(View.getContext())
+//        if (mealFetched != null) {
+//            if (mealFetched.meals.isNotEmpty())
+//                for(meal in mealFetched.meals){
+//                    try {
+//                        repo.insertMeal(meal)
+//                        Log.d("SQLite","Row Added")
+//                    }catch (e : SQLiteConstraintException){
+//                        Log.d("SQLiteConstraintException",e.toString())
+//                    }
+//                }
+//        }
+//    }
 }
