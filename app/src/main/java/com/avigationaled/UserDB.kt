@@ -36,6 +36,9 @@ interface UserDao {
     @RewriteQueriesToDropUnusedColumns
     @Query("SELECT * FROM user_table WHERE id = :userId")
     fun getUserById(userId: Int): List<UserDB>?
+
+    @Query("SELECT * FROM user_table WHERE username = :username")
+    fun getUserName(username: String): UserDB?
 }
 
 @Database(entities = [UserDB::class,Meal::class], version = 1)
@@ -56,6 +59,7 @@ class UserRepository(context: Context) {
     private val userDao: UserDao = database.userDao()
     private val mealDao: MealDao = database.mealDao()
 
+    /// User Table ///
     suspend fun insertUser(user: UserDB) {
         withContext(Dispatchers.IO) {
             userDao.insertUser(user)
@@ -70,6 +74,17 @@ class UserRepository(context: Context) {
             else null
         }
     }
+    suspend fun getUserName(userId: Int): UserDB? {
+        return withContext(Dispatchers.IO) {
+            val user = userDao.getUserById(userId)
+            if(user != null){
+                user[0]
+            }
+            else null
+        }
+    }
+
+    /// Meal Table ///
     suspend fun getMealById(idMeal: Int): Meal? {
         return withContext(Dispatchers.IO) {
             mealDao.getMealById(idMeal)
