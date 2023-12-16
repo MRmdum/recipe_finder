@@ -1,5 +1,6 @@
 package com.avigationaled
 
+import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.os.Debug
 import android.util.Log
@@ -9,7 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,15 +45,20 @@ class page1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_page1, container, false)
-        val buttonFragmentA: Button? = view?.findViewById(R.id.button)
-        buttonFragmentA?.setOnClickListener {
+
+            lifecycleScope.launch{
+
+            }
+
+            // Inflate the layout for this fragment
+            val view = inflater.inflate(R.layout.fragment_page1, container, false)
+            val buttonFragmentA: Button? = view?.findViewById(R.id.button)
+            buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.mainfrag)
-            val text = HttpKtorClient().http_get("http://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata") as String
-            val toast = Toast.makeText(context, text, Toast.LENGTH_LONG) // in Activity
-            toast.show()
-            Log.d("HttpRequest",text)
+
+//            val toast = Toast.makeText(context, text.toString(), Toast.LENGTH_LONG) // in Activity
+//            toast.show()
+//            Log.d("HttpRequest",text.toString())
         }
         return view
     }
