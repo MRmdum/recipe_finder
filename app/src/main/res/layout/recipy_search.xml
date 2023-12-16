@@ -47,7 +47,7 @@
                 android:hint="Email or username"
                 android:inputType="text"
                 android:padding="8dp"
-                android:text="TextView"
+                android:text=""
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

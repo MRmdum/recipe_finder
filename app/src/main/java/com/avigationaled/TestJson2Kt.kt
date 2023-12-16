@@ -1,6 +1,7 @@
 package com.avigationaled
 
 import androidx.annotation.NonNull
+import androidx.lifecycle.LiveData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 //UserDB
@@ -24,6 +25,11 @@ interface MealDao {
 
     @Query("SELECT * FROM meal_table WHERE idMeal = :idMeal")
     fun getMealById(idMeal: Int): Meal?
+
+    @Query("SELECT * FROM meal_table WHERE strMeal LIKE '%' || :strMeal || '%'")
+    fun getMealByName(strMeal: String): List<Meal>?
+    @Query("SELECT * FROM meal_table")
+    fun getAllMeal(): List<Meal>?
 
 }
 

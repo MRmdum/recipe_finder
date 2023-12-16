@@ -12,6 +12,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 //UserRepository
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.ColumnInfo
 import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Room
@@ -72,6 +73,16 @@ class UserRepository(context: Context) {
     suspend fun getMealById(idMeal: Int): Meal? {
         return withContext(Dispatchers.IO) {
             mealDao.getMealById(idMeal)
+        }
+    }
+    suspend fun getMealByName(strMeal: String): List<Meal>? {
+        return withContext(Dispatchers.IO) {
+            mealDao.getMealByName(strMeal)
+        }
+    }
+    suspend fun getAllMeal(): List<Meal>? {
+        return withContext(Dispatchers.IO) {
+            mealDao.getAllMeal()
         }
     }
     suspend fun insertMeal(meal: Meal) {

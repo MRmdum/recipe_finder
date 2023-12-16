@@ -1,11 +1,15 @@
 package com.avigationaled
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -42,10 +46,42 @@ class mainfrag : Fragment() {
         lifecycleScope.launch{
             val url = "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
             HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
+
+//            val list2meal = UserRepository(requireContext()).getAllMeal()
+//            if (list2meal != null) {
+//                for(meal in list2meal){
+//                    Log.d("DB result",meal.toString())
+//                }
+//            }
         }
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.recipy_search, container, false)
+
+
+
+        val text2recherche: TextView? = view?.findViewById(R.id.txtV_Research)
+        text2recherche?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun afterTextChanged(editable: Editable?) {
+                // This method is called to notify you that the characters within `editable` have changed.
+                val text = editable.toString()
+                // Do something with the new text
+                lifecycleScope.launch{
+                    try {
+                        val list2meal = UserRepository(requireContext()).getMealByName(text)
+                        if (list2meal != null) {
+                            for(meal in list2meal){
+                                Log.d("DB result",meal.toString())
+                            }
+                        }
+                    }catch (e:Exception){Log.d("ErrorReadSQLite",e.toString())}
+                }
+            }
+        })
 
         val buttonFragmentA: ImageButton? = view?.findViewById(R.id.Button)
         buttonFragmentA?.setOnClickListener {
