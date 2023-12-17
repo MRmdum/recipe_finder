@@ -158,9 +158,9 @@ class mainfrag : Fragment() {
                 val joinedIngr = ingredients.joinToString(" / ")
 
                 // Check if the specified ingredient is present in the current meal
-                if (ingredients.contains(search)) {
+                val filteredIngr = ingredients.filter { it?.contains(search) ?: false }
+                if (filteredIngr.isNotEmpty()) {
                     list2Ingredient?.add(meal)
-
                 }
             }
             lifecycleScope.launch{
