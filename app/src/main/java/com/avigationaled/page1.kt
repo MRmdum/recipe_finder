@@ -1,5 +1,7 @@
 package com.avigationaled
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.os.Debug
@@ -9,9 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,18 +47,50 @@ class page1 : Fragment() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-            lifecycleScope.launch{
-                val url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
-                HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
-            }
+//            lifecycleScope.launch{
+//                val url = "https://www.themealdb.com/api/json/v1/1/search.php?f=a"
+//                HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
+//            }
 
             // Inflate the layout for this fragment
             val view = inflater.inflate(R.layout.fragment_page1, container, false)
+
+            val sharePreference = context?.getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
+
+            val meal_title: TextView? = view?.findViewById(R.id.tV_titre)
+            val meal_ingr: TextView? = view?.findViewById(R.id.tV_ingredients)
+            val meal_descr: TextView? = view?.findViewById(R.id.tV_description)
+            val meal_image: ImageView? = view?.findViewById(R.id.imageView3)
+
+            if(sharePreference!=null){
+                if (meal_title != null) {
+                    meal_title.text = sharePreference.getString("Meal_name","").toString()
+                }
+                if (meal_ingr != null) {
+                    meal_ingr.text = sharePreference.getString("Ingredient","").toString()
+                }
+
+                if (meal_descr != null) {
+                    meal_descr.text = sharePreference.getString("Descr","").toString()
+                }
+
+                if (meal_image != null) {
+                    context?.let {
+                        Glide.with(it)
+                            .load(sharePreference.getString("ImageUrl","").toString())
+                            .placeholder(R.drawable.default_meal)
+                            .transition(DrawableTransitionOptions.withCrossFade())
+                            .into(meal_image)
+                    }
+                }
+
+            }
             val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
             buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.mainfrag)

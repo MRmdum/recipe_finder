@@ -31,6 +31,8 @@ class CustomAdapter(private val itemList: List<Meal>, private val context: Conte
         val joinedIngr = ingeredients.joinToString(" / ")
         editor.putString("Ingredient",joinedIngr)
         editor.putString("ImageUrl",currentItem.strMealThumb)
+        editor.putString("Descr",currentItem.strInstructions)
+
         editor.apply()
 
         Log.d("TEST_CLICK","PASS2E")
