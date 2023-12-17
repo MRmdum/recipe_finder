@@ -15,7 +15,7 @@
         app:layout_constraintGuide_percent="0.35" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tV_titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter your\nAttributes"
