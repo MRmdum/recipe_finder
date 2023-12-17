@@ -28,7 +28,7 @@ class CustomAdapter(private val itemList: List<Meal>, private val context: Conte
         editor.putString("Meal_name",currentItem.strMeal)
         val ingeredients = listOf(currentItem.strIngredient1,currentItem.strIngredient2,currentItem.strIngredient3,currentItem.strIngredient4,currentItem.strIngredient5,currentItem.strIngredient6,currentItem.strIngredient7,currentItem.strIngredient8,currentItem.strIngredient9,currentItem.strIngredient10,
             currentItem.strIngredient11,currentItem.strIngredient12,currentItem.strIngredient13,currentItem.strIngredient14,currentItem.strIngredient15,currentItem.strIngredient16,currentItem.strIngredient17,currentItem.strIngredient18,currentItem.strIngredient19,currentItem.strIngredient20)
-        val joinedIngr = ingeredients.joinToString(" / ")
+        val joinedIngr = ingeredients.filterNotNull().filter { it.isNotEmpty() }.joinToString(" / ")
         editor.putString("Ingredient",joinedIngr)
         editor.putString("ImageUrl",currentItem.strMealThumb)
         editor.putString("Descr",currentItem.strInstructions)
@@ -45,7 +45,7 @@ class CustomAdapter(private val itemList: List<Meal>, private val context: Conte
 
         val ingeredients = listOf(currentItem.strIngredient1,currentItem.strIngredient2,currentItem.strIngredient3,currentItem.strIngredient4,currentItem.strIngredient5,currentItem.strIngredient6,currentItem.strIngredient7,currentItem.strIngredient8,currentItem.strIngredient9,currentItem.strIngredient10,
             currentItem.strIngredient11,currentItem.strIngredient12,currentItem.strIngredient13,currentItem.strIngredient14,currentItem.strIngredient15,currentItem.strIngredient16,currentItem.strIngredient17,currentItem.strIngredient18,currentItem.strIngredient19,currentItem.strIngredient20)
-        val joinedIngr = ingeredients.joinToString(" / ")
+        val joinedIngr = ingeredients.filterNotNull().filter { it.isNotEmpty() }.joinToString(" / ")
         holder.textViewingredient.text = joinedIngr
 
         Glide.with(context)
