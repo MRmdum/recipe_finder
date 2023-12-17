@@ -1,17 +1,36 @@
 package com.avigationaled
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class CustomAdapter(private val itemList: List<Meal>,private val context: Context) : RecyclerView.Adapter<ItemViewHolder>() {
+class CustomAdapter(private val itemList: List<Meal>, private val context: Context, private val fragment: Fragment) : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fiche_meal, parent, false)
-        return ItemViewHolder(view)
+        return ItemViewHolder(view, onItemClick)
+    }
+    val onItemClick: (Int) -> Unit = { position ->
+        Log.d("TEST_CLICK","CLick")
+
+        val sharePreference = context.getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
+        val editor = sharePreference.edit()
+        editor.putString("Meal","")
+        editor.putString("Ingredient","")
+        editor.putString("ImageUrl","")
+        editor.apply()
+        if (fragment != null ){
+            Log.d("TEST_CLICK","PASS2E")
+            findNavController(fragment).navigate(R.id.page1)
+        }
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
@@ -29,6 +48,9 @@ class CustomAdapter(private val itemList: List<Meal>,private val context: Contex
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(holder.imageViewMeal)
         // Bind other data to views here
+
+
+
     }
 
     override fun getItemCount(): Int {
