@@ -79,10 +79,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
+                android:clickable="true"
                 android:text="Forgot Password"
                 android:textColor="@color/flame"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ed_password" />
+
+            <TextView
+                android:id="@+id/tv_forgotHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is a hint"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ed_password" />
 
             <Button

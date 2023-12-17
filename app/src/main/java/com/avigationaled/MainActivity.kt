@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         val edUsername = findViewById<EditText>(R.id.ed_username)
         val edPassword = findViewById<EditText>(R.id.ed_password)
         val btnCreate = findViewById<TextView>(R.id.tv_signup)
+        val btnForgotBtn = findViewById<TextView>(R.id.tv_forgot_password)
+        val ed_hint = findViewById<TextView>(R.id.tv_forgotHint)
 
         val sharePreference = getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
         val getUsername = sharePreference.getString("USERNAME","")
@@ -59,10 +62,29 @@ class MainActivity : AppCompatActivity() {
                     startActivity(i)
                 }
             }
+            else{
+                ed_hint.isVisible = true
+                ed_hint.setText("Identifiant inconnu")
+            }
         }
         btnCreate.setOnClickListener {
             val i = Intent(this,CreateAccount::class.java)
             startActivity(i)
+        }
+        btnForgotBtn.setOnClickListener{
+            var result : String = ""
+            var stck : String = ""
+            if(sharedPreferenceUser.contains(edUsername.text.toString()))
+            {
+                ed_hint.isVisible = true
+                stck = sharedPreferenceUser.all[edUsername.text.toString()].toString()
+                result += stck[0]
+                for (i in stck.substring(1)){
+                    result += '*'
+                }
+                ed_hint.setText("Indice sur le mot de passe : $result")
+            }
+
         }
     }
 
