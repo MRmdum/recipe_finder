@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is a rectangle with the right corners rounded -->
+    <solid android:color="#0000"/> <!-- Adjust  the c olor to match your image's background if it's not transparent -->
+    <corners
+        android:topRightRadius="8dp"
+        android:bottomRightRadius="8dp"/>
+</shape>
