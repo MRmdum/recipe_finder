@@ -33,10 +33,8 @@ class CustomAdapter(private val itemList: List<Meal>, private val context: Conte
         editor.putString("ImageUrl",currentItem.strMealThumb)
         editor.apply()
 
-        if (fragment != null ){
-            Log.d("TEST_CLICK","PASS2E")
-            findNavController(fragment).navigate(R.id.page1)
-        }
+        Log.d("TEST_CLICK","PASS2E")
+        findNavController(fragment).navigate(R.id.page1)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
