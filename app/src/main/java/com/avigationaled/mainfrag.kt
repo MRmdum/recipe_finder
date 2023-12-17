@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -46,7 +47,7 @@ class mainfrag : Fragment() {
     ): View? {
 
         lifecycleScope.launch{
-            val url = "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
+            val url = "https://www.themealdb.com/api/json/v1/1/search.php?s="
             HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
 
             val list2meal = UserRepository(requireContext()).getAllMeal()
@@ -66,9 +67,38 @@ class mainfrag : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.recipy_search, container, false)
 
+        var searchView :SearchView = view.findViewById(R.id.searchV_Research)
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return true
+            }
 
+            override fun onQueryTextChange(newText: String): Boolean {
+                lifecycleScope.launch{
+                    try {
+                        val list2meal = UserRepository(requireContext()).getMealByName(newText)
+                        if (list2meal != null) {
+                            val recyclerView: RecyclerView? = view?.findViewById(R.id.recyclerView)
+                            for(meal in list2meal){
+                                Log.d("DB result",meal.toString())
 
-        val text2recherche: TextView? = view?.findViewById(R.id.txtV_Research)
+                            }
+                            if (recyclerView != null) {
+                                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                                recyclerView.adapter = CustomAdapter(list2meal,
+                                    requireContext(), this@mainfrag)
+                            }
+                        }
+                    }catch (e:Exception){Log.d("ErrorReadSQLite",e.toString())}
+                }
+                return false
+            }
+
+        })
+
+        /*
+        val text2recherche: TextView? = view?.findViewById(R.id.searchV_Research)
         text2recherche?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -89,12 +119,8 @@ class mainfrag : Fragment() {
                     }catch (e:Exception){Log.d("ErrorReadSQLite",e.toString())}
                 }
             }
-        })
+        })*/
 
-        val buttonFragmentA: ImageButton? = view?.findViewById(R.id.Button)
-        buttonFragmentA?.setOnClickListener {
-            findNavController().navigate(R.id.page1)
-        }
 
 
 

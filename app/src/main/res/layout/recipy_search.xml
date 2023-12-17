@@ -30,27 +30,22 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/txtV_Research"
+            <SearchView
+                android:id="@+id/searchV_Research"
                 android:layout_width="187dp"
-                android:layout_height="wrap_content"
-
+                android:layout_height="49dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search"
                 android:background="@drawable/edit_text_background"
-                android:drawablePadding="8dp"
-                android:drawableTint="@color/Crimson"
-                android:ems="10"
-                android:hint="Email or username"
+                android:clickable="true"
                 android:inputType="text"
                 android:padding="8dp"
-                android:text=""
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:iconifiedByDefault="false"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
