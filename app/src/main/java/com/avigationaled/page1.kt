@@ -93,14 +93,14 @@ class page1 : Fragment() {
                 }
 
             }
-            val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
-            buttonFragmentA?.setOnClickListener {
+            //val buttonFragmentA: Button? = view?.findViewById(R.id.Button)
+            /*buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.mainfrag)
 
 //            val toast = Toast.makeText(context, text.toString(), Toast.LENGTH_LONG) // in Activity
 //            toast.show()
 //            Log.d("HttpRequest",text.toString())
-        }
+        }*/
         return view
     }
 
