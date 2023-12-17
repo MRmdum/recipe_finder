@@ -21,6 +21,7 @@ class LoginPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btnHome = findViewById<ImageButton>(R.id.imageButton)
         val btnDisconnect = findViewById<ImageButton>(R.id.btn_disconnect)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
@@ -38,6 +39,10 @@ class LoginPage : AppCompatActivity() {
             editor.putString("PASSWORD","")
             editor.apply()
             val i = Intent(this,MainActivity::class.java)
+            startActivity(i)
+        }
+        btnHome.setOnClickListener{
+            val i = Intent(this,LoginPage::class.java)
             startActivity(i)
         }
     }
