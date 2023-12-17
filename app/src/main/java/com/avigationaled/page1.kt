@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.os.Debug
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -77,6 +78,7 @@ class page1 : Fragment() {
                 }
 
                 if (meal_descr != null) {
+                    meal_descr.movementMethod = ScrollingMovementMethod()
                     meal_descr.text = sharePreference.getString("Descr","").toString()
                 }
 
