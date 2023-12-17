@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -12,4 +14,43 @@
         android:layout_width="68dp"
         android:layout_height="wrap_content"
         android:text="" />
+
+    <TextView
+        android:id="@+id/recipeName"
+        android:layout_width="166dp"
+        android:layout_height="23dp"
+        android:text="RecipeName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/recipeImage"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.153"  />
+
+    <!-- TextView for the recipe ingredients -->
+
+    <TextView
+        android:id="@+id/recipeIngredients"
+        android:layout_width="201dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="24dp"
+        android:text="Ingredients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeName" />
+
+    <ImageView
+        android:id="@+id/recipeImage"
+        android:layout_width="123dp"
+        android:layout_height="122dp"
+        android:src="@drawable/default_meal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.991"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </LinearLayout>

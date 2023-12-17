@@ -60,11 +60,13 @@ dependencies {
     implementation ("io.ktor:ktor-client-core:2.3.6")
     implementation ("io.ktor:ktor-client-json-jvm:2.3.6")
     implementation ("io.ktor:ktor-client-logging-jvm:2.3.6")
-    implementation("io.ktor:ktor-client-okhttp:2.3.6")
-    implementation("io.ktor:ktor-client-cio:2.3.6")
+    implementation ("io.ktor:ktor-client-okhttp:2.3.6")
+    implementation ("io.ktor:ktor-client-cio:2.3.6")
     implementation ("com.google.code.gson:gson:2.10")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation ("androidx.room:room-runtime:2.6.1")
     kapt ("androidx.room:room-compiler:2.6.1")
 

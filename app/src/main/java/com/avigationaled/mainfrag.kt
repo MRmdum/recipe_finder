@@ -55,7 +55,7 @@ class mainfrag : Fragment() {
 
                 if (recyclerView != null) {
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    recyclerView.adapter = CustomAdapter(list2meal)
+                    recyclerView.adapter = CustomAdapter(list2meal,requireContext())
                 }
             }
 
