@@ -2,6 +2,7 @@ package com.avigationaled
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ class CreateAccount : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
         val btnLogin = findViewById<Button>(R.id.btn_createAccount)
         val edUsername = findViewById<EditText>(R.id.ed_username)
         val edPassword = findViewById<EditText>(R.id.ed_password)
