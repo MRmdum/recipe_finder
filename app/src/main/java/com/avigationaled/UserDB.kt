@@ -39,6 +39,9 @@ interface UserDao {
 
     @Query("SELECT * FROM user_table WHERE username = :username")
     fun getUserName(username: String): UserDB?
+
+    @Query("INSERT INTO user_table (username,password) VALUES (:username,:password)")
+    fun  createUser(username:String, password:String): UserDB?
 }
 
 @Database(entities = [UserDB::class,Meal::class], version = 1)
