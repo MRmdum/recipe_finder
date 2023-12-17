@@ -7,6 +7,7 @@ plugins {
 
 }
 
+
 android {
     namespace = "com.avigationaled"
     compileSdk = 34

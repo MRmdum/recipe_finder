@@ -13,6 +13,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -47,12 +49,16 @@ class mainfrag : Fragment() {
             val url = "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
             HttpKtorClient().fromHttpGetWriteDB(url,requireContext())
 
-//            val list2meal = UserRepository(requireContext()).getAllMeal()
-//            if (list2meal != null) {
-//                for(meal in list2meal){
-//                    Log.d("DB result",meal.toString())
-//                }
-//            }
+            val list2meal = UserRepository(requireContext()).getAllMeal()
+            if (list2meal != null) {
+                val recyclerView: RecyclerView? = view?.findViewById(R.id.recyclerView)
+
+                if (recyclerView != null) {
+                    recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                    recyclerView.adapter = CustomAdapter(list2meal)
+                }
+            }
+
         }
 
         // Inflate the layout for this fragment
@@ -87,6 +93,9 @@ class mainfrag : Fragment() {
         buttonFragmentA?.setOnClickListener {
             findNavController().navigate(R.id.page1)
         }
+
+
+
         return view
     }
 
