@@ -9,44 +9,55 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/ochre">
 
         <TextView
             android:id="@+id/tV_titre"
-            android:layout_width="198dp"
+            android:layout_width="199dp"
             android:layout_height="88dp"
+            android:background="@drawable/edit_text_background"
             android:text="Titre"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView3"
             app:layout_constraintHorizontal_bias="0.432"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.048" />
+            app:layout_constraintVertical_bias="0.083" />
 
         <TextView
             android:id="@+id/tV_ingredients"
             android:layout_width="385dp"
             android:layout_height="128dp"
+            android:background="@drawable/edit_text_background"
             android:text="Ingrédients"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.615"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tV_titre"
-            app:layout_constraintVertical_bias="0.179" />
+            app:layout_constraintVertical_bias="0.149" />
 
         <TextView
             android:id="@+id/tV_description"
-            android:layout_width="385dp"
-            android:layout_height="250dp"
+            style="@style/custom_card_view_style"
+            android:layout_width="375dp"
+            android:layout_height="278dp"
+            android:background="@drawable/edit_text_background"
             android:text="Description"
-            android:scrollbars = "vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintHorizontal_bias="0.555"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tV_ingredients"
-            app:layout_constraintVertical_bias="0.178" />
+            app:layout_constraintVertical_bias="0.378" />
+
 
         <Button
             android:id="@+id/Button"
@@ -68,6 +79,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.027" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
