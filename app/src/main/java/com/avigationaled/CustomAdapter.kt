@@ -21,12 +21,18 @@ class CustomAdapter(private val itemList: List<Meal>, private val context: Conte
     val onItemClick: (Int) -> Unit = { position ->
         Log.d("TEST_CLICK","CLick")
 
+        val currentItem = this.itemList[position]
         val sharePreference = context.getSharedPreferences("MY_PRE", Context.MODE_PRIVATE)
+
         val editor = sharePreference.edit()
-        editor.putString("Meal","")
-        editor.putString("Ingredient","")
-        editor.putString("ImageUrl","")
+        editor.putString("Meal_name",currentItem.strMeal)
+        val ingeredients = listOf(currentItem.strIngredient1,currentItem.strIngredient2,currentItem.strIngredient3,currentItem.strIngredient4,currentItem.strIngredient5,currentItem.strIngredient6,currentItem.strIngredient7,currentItem.strIngredient8,currentItem.strIngredient9,currentItem.strIngredient10,
+            currentItem.strIngredient11,currentItem.strIngredient12,currentItem.strIngredient13,currentItem.strIngredient14,currentItem.strIngredient15,currentItem.strIngredient16,currentItem.strIngredient17,currentItem.strIngredient18,currentItem.strIngredient19,currentItem.strIngredient20)
+        val joinedIngr = ingeredients.joinToString(" / ")
+        editor.putString("Ingredient",joinedIngr)
+        editor.putString("ImageUrl",currentItem.strMealThumb)
         editor.apply()
+
         if (fragment != null ){
             Log.d("TEST_CLICK","PASS2E")
             findNavController(fragment).navigate(R.id.page1)
